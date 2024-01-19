@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Demo Features</string>
+    <string name="login_lbl">Iniciar sesion</string>
+    <string name="login_btn">Ingresar</string>
+    <string name="signin_lbl">Registrarse</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
 </resources>
