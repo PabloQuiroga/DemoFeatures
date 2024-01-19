@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.siar.demofeatures.utils.validateEmail
+import com.siar.demofeatures.utils.validatePassword
 
 /*****
  * Project: Demo Features
@@ -39,6 +41,14 @@ class LoginViewModel: ViewModel() {
     }
 
     fun onLoginVerify(context: Context){
-        Toast.makeText(context, user, Toast.LENGTH_SHORT).show()
+        val userValidate = user.validateEmail()
+        val passValidate = pass.validatePassword()
+        val errorMessage = userValidate.message + "\n" + passValidate.message
+
+        val message = if(userValidate.isValid && passValidate.isValid){
+            user
+        } else errorMessage
+
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

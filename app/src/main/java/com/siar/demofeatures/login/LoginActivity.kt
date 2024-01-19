@@ -5,9 +5,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Observer
 import com.siar.demofeatures.databinding.ActivityLoginBinding
 
@@ -18,7 +22,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater).apply {
+            composeView.setContent {
+                // You're in Compose world!
+                MaterialTheme {
+                    PlantDetailDescription()
+                }
+            }
+        }
         setContentView(binding.root)
 
         handleInputs()
@@ -61,4 +72,17 @@ class LoginActivity : AppCompatActivity() {
     private fun login(){
         loginViewModel.onLoginVerify(this)
     }
+}
+
+@Composable
+fun PlantDetailDescription() {
+    Surface {
+        Text("Hello Compose")
+    }
+}
+
+@Preview
+@Composable
+fun PreviewPlant(){
+    PlantDetailDescription()
 }

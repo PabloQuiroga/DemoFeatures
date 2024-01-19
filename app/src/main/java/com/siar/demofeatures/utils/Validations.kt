@@ -1,6 +1,5 @@
 package com.siar.demofeatures.utils
 
-import android.content.Context
 import android.util.Patterns
 
 /*****
@@ -8,11 +7,13 @@ import android.util.Patterns
  * Created by: Pablo Daniel Quiroga
  * Since: 18/01/2024
  *
+ * Field validations
+ *
  * All rights reserved 2024.
  *****/
 class ValidationModel(val isValid: Boolean, val message: String)
 
-fun String.validateEmail(context: Context): ValidationModel {
+fun String.validateEmail(): ValidationModel {
     return if (this.trim().isEmpty()) {
         ValidationModel(false, "Email should not Empty")
     } else if (!Patterns.EMAIL_ADDRESS.matcher(this).matches()) {
@@ -22,9 +23,7 @@ fun String.validateEmail(context: Context): ValidationModel {
     }
 }
 
-//  context for harcoded string
-fun String.validatePassword(context: Context): ValidationModel {
-    // require combination number and text
+fun String.validatePassword(): ValidationModel {
     val pattern = "[0-9]".toRegex()
     val pattern2 = "[a-z]|[A-Z]".toRegex()
 
