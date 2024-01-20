@@ -1,4 +1,4 @@
-package com.siar.demofeatures.utils
+package com.siar.demofeatures.ui.utils
 
 import android.util.Patterns
 

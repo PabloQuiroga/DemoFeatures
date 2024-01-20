@@ -1,4 +1,4 @@
-package com.siar.demofeatures.main
+package com.siar.demofeatures.ui.main
 
 import androidx.lifecycle.ViewModel
 

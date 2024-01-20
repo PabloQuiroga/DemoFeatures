@@ -1,12 +1,17 @@
-package com.siar.demofeatures.login
+package com.siar.demofeatures.ui.login
 
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.siar.demofeatures.utils.validateEmail
-import com.siar.demofeatures.utils.validatePassword
+import androidx.lifecycle.viewModelScope
+import com.siar.demofeatures.data.LoginRepository
+import com.siar.demofeatures.ui.utils.validateEmail
+import com.siar.demofeatures.ui.utils.validatePassword
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 /*****
  * Project: Demo Features
@@ -16,6 +21,7 @@ import com.siar.demofeatures.utils.validatePassword
  * All rights reserved 2024.
  *****/
 class LoginViewModel: ViewModel() {
+    private val repository = LoginRepository()
 
     private var _loginEnabled: MutableLiveData<Boolean> = MutableLiveData(false)
     val loginEnabled: LiveData<Boolean> = _loginEnabled
@@ -45,10 +51,30 @@ class LoginViewModel: ViewModel() {
         val passValidate = pass.validatePassword()
         val errorMessage = userValidate.message + "\n" + passValidate.message
 
+
         val message = if(userValidate.isValid && passValidate.isValid){
-            user
+            checkUser(user)
         } else errorMessage
 
+        showMessage(message, context)
+    }
+
+    private fun checkUser(user: String): String {
+        val messageUser = runBlocking {
+            async {
+                val userApi = repository.getUserFromApi()
+                if(user == userApi.user) {
+                    return@async "usuario correcto"
+                } else {
+                    return@async "usuario incorrecto"
+                }
+            }.await()
+        }
+
+        return messageUser
+    }
+
+    private fun showMessage(message: String, context: Context){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
