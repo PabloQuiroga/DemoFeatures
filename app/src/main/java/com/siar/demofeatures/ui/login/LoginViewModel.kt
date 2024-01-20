@@ -30,6 +30,7 @@ class LoginViewModel: ViewModel() {
     private lateinit var pass: String
     private var mail = false
     private var psw = false
+    private var message = ""
 
     fun validateUser(u: String){
         if (u.trim().isNotEmpty()) {
@@ -52,15 +53,15 @@ class LoginViewModel: ViewModel() {
         val errorMessage = userValidate.message + "\n" + passValidate.message
 
 
-        val message = if(userValidate.isValid && passValidate.isValid){
+        message = if(userValidate.isValid && passValidate.isValid){
             checkUser(user)
         } else errorMessage
 
         showMessage(message, context)
     }
 
-    private fun checkUser(user: String): String {
-        val messageUser = runBlocking {
+     private fun checkUser(user: String): String {
+        return runBlocking {
             async {
                 val userApi = repository.getUserFromApi()
                 if(user == userApi.user) {
@@ -70,8 +71,6 @@ class LoginViewModel: ViewModel() {
                 }
             }.await()
         }
-
-        return messageUser
     }
 
     private fun showMessage(message: String, context: Context){

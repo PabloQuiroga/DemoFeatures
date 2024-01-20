@@ -1,6 +1,7 @@
 package com.siar.demofeatures.data.network
 
 import com.siar.demofeatures.data.model.UserModel
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -18,5 +19,12 @@ class UserServiceTest {
     fun getUserCorrect() {
         val userModel = UserModel("jtdoe78@gmail.com", "1234")
         assertEquals("jtdoe78@gmail.com", userModel.user)
+    }
+
+    @Test
+    fun getUserAsyncCorrect() = runTest{
+        val service = UserService()
+        val result = service.getUser()
+        assert(result.user == "jtdoe78@gmail.com")
     }
 }

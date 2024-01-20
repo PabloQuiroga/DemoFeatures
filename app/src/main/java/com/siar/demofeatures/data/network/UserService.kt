@@ -16,8 +16,8 @@ class UserService {
 
     suspend fun getUser(): UserModel {
         return withContext(Dispatchers.IO) {
-            val response = userMock
-            response
+            Thread.sleep(2000)
+            userMock
         }
     }
 }
