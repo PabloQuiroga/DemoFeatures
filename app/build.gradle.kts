@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+
     val lifecycleVersion = "2.7.0"
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
 
