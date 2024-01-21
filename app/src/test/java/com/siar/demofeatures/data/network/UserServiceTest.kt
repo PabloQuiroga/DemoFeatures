@@ -25,6 +25,7 @@ class UserServiceTest {
     fun getUserAsyncCorrect() = runTest{
         val service = UserService()
         val result = service.getUser()
-        assert(result.user == "jtdoe78@gmail.com")
+        val expected = "jtdoe78@gmail.com"
+        assertEquals(expected, result.user)
     }
 }
