@@ -46,6 +46,7 @@ dependencies {
 
     val lifecycleVersion = "2.7.0"
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
+    val mockitoVersion = "3.12.4"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
@@ -64,9 +65,11 @@ dependencies {
 
     // test android
     testImplementation("junit:junit:4.13.2")
-    implementation("androidx.test:core-ktx:1.5.0")
+    testImplementation("androidx.test:core-ktx:1.5.0")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
 
     // test de corroutines
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0-RC2")
