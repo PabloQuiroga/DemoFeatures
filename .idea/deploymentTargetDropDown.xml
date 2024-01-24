@@ -8,10 +8,13 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="validateListEmails()">
+      <entry key="checkEditMail()">
         <State />
       </entry>
-      <entry key="validateListPasswords()">
+      <entry key="checkTextTitle()">
+        <State />
+      </entry>
+      <entry key="validateListEmails()">
         <State />
       </entry>
     </value>
