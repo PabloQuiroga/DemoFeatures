@@ -44,16 +44,16 @@ android {
 
 dependencies {
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    val lifecycleVersion = "2.7.0"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    val lifecycleVersion = "2.8.4"
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
-    val mockitoVersion = "3.12.4"
-    val testCoreKtxVersion = "1.5.0"
+    val mockitoVersion = "5.12.0"
+    val testCoreKtxVersion = "1.6.1"
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // viewmodel
@@ -70,8 +70,8 @@ dependencies {
     testImplementation("androidx.test:core-ktx:$testCoreKtxVersion")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("androidx.test:core-ktx:$testCoreKtxVersion")
 
